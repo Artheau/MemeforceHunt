@@ -5,6 +5,7 @@ import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -40,14 +42,14 @@ import static javax.swing.SpringLayout.*;
  * Shoutouts to Zarby89
  */
 public class Reskin {
-	public static final String VERSION = "1.2";
+	public static final String VERSION = "1.3";
 	private static final String LINK = "https://github.com/fatmanspanda/MemeforceHunt/releases";
 
 	public static final int OFFSET = 0x18A800;
 	public static final int PAL_LOC = 0x103B2D;
 	public static final int PAL_OW = 0x100A03;
 
-	static final int PER_ROW = 8;
+	static final int PER_ROW = 10;
 	static final Skin[] SKINS = Skin.values();
 
 	public static void main(String[] args) throws IOException {
@@ -70,7 +72,7 @@ public class Reskin {
 			// do nothing
 		} //end System
 
-		final Dimension d = new Dimension(400, 400);
+		final Dimension d = new Dimension(320, 375);
 		JFrame frame = new JFrame("Memeforce Hunt v" + VERSION);
 
 		SpringLayout l = new SpringLayout();
@@ -134,12 +136,16 @@ public class Reskin {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridy = 0;
 		c.gridx = 0;
+		c.insets = new Insets(0, 0, 1, 1);
+		ButtonGroup options = new ButtonGroup();
+
 		for (Skin s : SKINS) {
 			SkinButton sb = new SkinButton(s);
 			sb.addActionListener(
 				arg0 -> {
 					skins.setSelectedItem(sb.getSkin());
 				});
+			options.add(sb);
 			iconList.add(sb, c);
 			c.gridx++;
 			if (c.gridx == PER_ROW) {
@@ -196,7 +202,7 @@ public class Reskin {
 		find.addActionListener(
 			arg0 -> {
 				explorer.setSelectedFile(EEE);
-				int option = explorer.showOpenDialog(find);
+				int option = explorer.showSaveDialog(find);
 				if (option == JFileChooser.CANCEL_OPTION) { return; }
 
 				// read the file
