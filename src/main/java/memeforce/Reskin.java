@@ -37,12 +37,12 @@ import static javax.swing.SpringLayout.*;
  * Compression command:
  * recomp.exe u_item.bin item.bin 0 0 0
  * 
- * for %f in (u_*.bin) do (recomp.exe %f n%f 0 0 0)
+ * for %I in (*.bin) do (recomp.exe %~nI.bin %~nI.gfx 0 0 0)
  * 
  * Shoutouts to Zarby89
  */
 public class Reskin {
-	public static final String VERSION = "1.4";
+	public static final String VERSION = "1.5";
 	private static final String LINK = "https://github.com/fatmanspanda/MemeforceHunt/releases";
 
 	public static final int OFFSET = 0x18A800;
@@ -72,7 +72,7 @@ public class Reskin {
 			// do nothing
 		} //end System
 
-		final Dimension d = new Dimension(320, 420);
+		final Dimension d = new Dimension(320, 440);
 		JFrame frame = new JFrame("Memeforce Hunt v" + VERSION);
 
 		SpringLayout l = new SpringLayout();
@@ -110,6 +110,13 @@ public class Reskin {
 		l.putConstraint(WEST, go, 5, WEST, wrap);
 		frame.add(go);
 
+		// random patch button
+		JButton rand = new JButton("Surprise me");
+		l.putConstraint(NORTH, rand, 5, SOUTH, go);
+		l.putConstraint(EAST, rand, 0, EAST, go);
+		l.putConstraint(WEST, rand, 0, WEST, go);
+		frame.add(rand);
+
 		// preview
 		JLabel prev = new JLabel();
 		prev.setHorizontalAlignment(SwingConstants.CENTER);
@@ -117,13 +124,6 @@ public class Reskin {
 		l.putConstraint(EAST, prev, 0, EAST, skinsText);
 		l.putConstraint(WEST, prev, 0, WEST, skinsText);
 		frame.add(prev);
-
-		// random patch button
-		JButton rand = new JButton("Surprise me");
-		l.putConstraint(NORTH, rand, 5, SOUTH, go);
-		l.putConstraint(EAST, rand, 0, EAST, go);
-		l.putConstraint(WEST, rand, 0, WEST, go);
-		frame.add(rand);
 
 		JPanel iconList = new JPanel(new GridBagLayout());
 		iconList.setBackground(null);

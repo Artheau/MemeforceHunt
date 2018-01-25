@@ -54,6 +54,12 @@ public enum Skin {
 	NO_SILVERS ("No silvers", "noag", RED),
 	JOY_PENDANT ("Joy pendant", "joypendant", BLUE),
 	KINSTONE ("Kinstone", "kinstone", GREEN),
+	GOLDEN_LEAF ("Golden leaf", "leaf", GREEN),
+	SECRET_SHELL ("Secret shell", "shell", BLUE),
+	NECKLACE ("Mermaid's necklace", "necklace", RED),
+	MARIMBA ("Wind marimba", "marimba", BLUE),
+	BANANA ("Banana", "banana", GREEN),
+	BRA ("Pink bra", "bra", BLUE),
 	ORE_CHUNK ("Ore chunk", "ore", RED),
 	FORK ("Triumph fork", "fork", GREEN),
 	Z1_LINK ("Z1 Link", "z1link", GREEN),
@@ -89,10 +95,13 @@ public enum Skin {
 	KIRBY_MUSIC ("Music sheet (Kirby)", "kirbymusic", RED),
 	CUBE ("Cube", "cube", GREEN),
 	MISSILE_TANK ("Missile tank", "missiletank", RED),
+	EMERALD ("Chaos emerald", "emerald", GREEN),
+	RING ("Ring", "ring", GREEN),
 	RABITE ("Rabite", "rabite", GREEN),
 	DRAGON_BALL ("Dragon ball", "dragonball", GREEN),
 	TRASH_CAN ("Trash can", "trashcan", RED),
 	PAINTING ("Pretty painting", "painting", BLUE),
+	PLANET ("Planet model", "planet", BLUE),
 	BEER ("Beer", "beer", GREEN),
 	PIZZA ("Pizza", "pizza", GREEN),
 	PIZZA_SLICE ("Pizza slice", "pizzaslice", GREEN),
@@ -101,6 +110,7 @@ public enum Skin {
 	B ("[B]", "B", RED),
 	POOP ("Poop", "poop", RED),
 	PYTHON ("Python logo", "python", BLUE),
+	JPG ("Broken image", "jpg", RED),
 	E404 ("Image not found", "E404", GREEN),
 	;
 
@@ -119,7 +129,7 @@ public enum Skin {
 		InputStream temp;
 		ArrayList<Byte> btemp = new ArrayList<Byte>();
 		temp = Skin.class.getResourceAsStream(
-				String.format("/gfx/%s.bin", fileName));
+				String.format("/gfx/%s.gfx", fileName));
 		int r = 0;
 		do {
 			try {
