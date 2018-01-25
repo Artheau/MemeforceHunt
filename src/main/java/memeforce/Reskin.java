@@ -42,7 +42,7 @@ import static javax.swing.SpringLayout.*;
  * Shoutouts to Zarby89
  */
 public class Reskin {
-	public static final String VERSION = "1.3";
+	public static final String VERSION = "1.4";
 	private static final String LINK = "https://github.com/fatmanspanda/MemeforceHunt/releases";
 
 	public static final int OFFSET = 0x18A800;
@@ -72,7 +72,7 @@ public class Reskin {
 			// do nothing
 		} //end System
 
-		final Dimension d = new Dimension(320, 375);
+		final Dimension d = new Dimension(320, 420);
 		JFrame frame = new JFrame("Memeforce Hunt v" + VERSION);
 
 		SpringLayout l = new SpringLayout();
@@ -298,7 +298,7 @@ public class Reskin {
 
 				// clear up space (safety)
 				int pos = OFFSET;
-				for (int i = 0; i < 950; i++, pos++) {
+				for (int i = 0; i < 1024; i++, pos++) {
 					romStream[pos] = 0;
 				}
 
