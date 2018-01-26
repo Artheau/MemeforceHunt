@@ -42,7 +42,7 @@ import static javax.swing.SpringLayout.*;
  * Shoutouts to Zarby89
  */
 public class Reskin {
-	public static final String VERSION = "1.5";
+	public static final String VERSION = "1.5.1";
 	private static final String LINK = "https://github.com/fatmanspanda/MemeforceHunt/releases";
 
 	public static final int OFFSET = 0x18A800;

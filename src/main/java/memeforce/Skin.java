@@ -89,7 +89,7 @@ public enum Skin {
 	GHOST ("Ghost", "ghost", BLUE),
 	BONKERS ("Bonkers", "bonkers", BLUE),
 	PHAN_PHAN ("Phan Phan", "phanphan", RED),
-	MASTER_HAND ("Master Hand", "masterhand", RED),
+	MASTER_HAND ("Master Hand", "masterhand", BLUE),
 	WHEELIE ("Wheelie", "wheelie", RED),
 	KIRBY_MAP ("Map (Kirby)", "kirbymap", GREEN),
 	KIRBY_MUSIC ("Music sheet (Kirby)", "kirbymusic", RED),
