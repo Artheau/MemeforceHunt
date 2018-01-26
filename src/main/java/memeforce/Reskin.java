@@ -72,7 +72,7 @@ public class Reskin {
 			// do nothing
 		} //end System
 
-		final Dimension d = new Dimension(320, 440);
+		final Dimension d = new Dimension(320, 450);
 		JFrame frame = new JFrame("Memeforce Hunt v" + VERSION);
 
 		SpringLayout l = new SpringLayout();
@@ -278,7 +278,6 @@ public class Reskin {
 		wrap.setBackground(new Color(225, 225, 225));
 		frame.setSize(d);
 		frame.setMinimumSize(d);
-		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocation(350, 350);
 
