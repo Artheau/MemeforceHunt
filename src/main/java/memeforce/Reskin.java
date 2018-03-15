@@ -7,11 +7,16 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -42,8 +47,30 @@ import static javax.swing.SpringLayout.*;
  * Shoutouts to Zarby89
  */
 public class Reskin {
-	public static final String VERSION = "1.5.1";
-	private static final String LINK = "https://github.com/fatmanspanda/MemeforceHunt/releases";
+	public static final String VERSION;
+	private static final String RELEASE_URL = "https://github.com/fatmanspanda/MemeforceHunt/releases";
+
+	private static final String VERSION_PATH = "/version";
+	private static final String VERSION_URL = "https://raw.githubusercontent.com/fatmanspanda/MemeforceHunt/master/version";
+	private static final boolean VERSION_GOOD;
+
+	static {
+		String line = "v0.0";
+		try (
+				BufferedReader br = new BufferedReader(new InputStreamReader(
+						Reskin.class.getResourceAsStream(VERSION_PATH),
+						StandardCharsets.UTF_8)
+				);
+			) {
+				line = br.readLine();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		VERSION = line;
+		System.out.println("Current version: " + VERSION);
+		VERSION_GOOD = amIUpToDate();
+		System.out.println("Up to date: " + VERSION_GOOD);
+	}
 
 	public static final int OFFSET = 0x18A800;
 	public static final int PAL_LOC = 0x103B2D;
@@ -73,7 +100,7 @@ public class Reskin {
 		} //end System
 
 		final Dimension d = new Dimension(320, 450);
-		JFrame frame = new JFrame("Memeforce Hunt v" + VERSION);
+		JFrame frame = new JFrame("Memeforce Hunt " + VERSION);
 
 		SpringLayout l = new SpringLayout();
 		JPanel wrap = (JPanel) frame.getContentPane();
@@ -164,7 +191,7 @@ public class Reskin {
 				arg0 -> {
 					URL aa;
 					try {
-						aa = new URL(LINK);
+						aa = new URL(RELEASE_URL);
 						Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 						if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 								desktop.browse(aa.toURI());
@@ -177,6 +204,13 @@ public class Reskin {
 						e.printStackTrace();
 					}
 				});
+
+		if (!VERSION_GOOD) {
+			update.setOpaque(true);
+			update.setBackground(Color.RED);
+			update.setForeground(Color.WHITE);
+			update.setText("Update available");
+		}
 
 		// file explorer
 		final BetterJFileChooser explorer = new BetterJFileChooser();
@@ -314,5 +348,31 @@ public class Reskin {
 				fsOut.close();
 			}
 		}
+	}
+
+	private static boolean amIUpToDate() {
+		boolean ret = true;
+		URL vURL;
+		try {
+			vURL = new URL(VERSION_URL);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		try (
+			InputStream s = vURL.openStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(s, StandardCharsets.UTF_8));
+		) {
+			String line = br.readLine();
+			System.out.println("Discovered version: " + line);
+			if (!line.equalsIgnoreCase(VERSION)) {
+				ret = false;
+			}
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return ret;
 	}
 }
