@@ -76,7 +76,7 @@ public class Reskin {
 	public static final int PAL_LOC = 0x103B2D;
 	public static final int PAL_OW = 0x100A03;
 
-	static final int PER_ROW = 10;
+	static final int PER_ROW = 11;
 	static final Skin[] SKINS = Skin.values();
 
 	public static void main(String[] args) throws IOException {
@@ -99,7 +99,7 @@ public class Reskin {
 			// do nothing
 		} //end System
 
-		final Dimension d = new Dimension(320, 450);
+		final Dimension d = new Dimension(350, 500);
 		JFrame frame = new JFrame("Memeforce Hunt " + VERSION);
 
 		SpringLayout l = new SpringLayout();
@@ -206,9 +206,8 @@ public class Reskin {
 				});
 
 		if (!VERSION_GOOD) {
-			update.setOpaque(true);
 			update.setBackground(Color.RED);
-			update.setForeground(Color.WHITE);
+			update.setForeground(Color.RED);
 			update.setText("Update available");
 		}
 
