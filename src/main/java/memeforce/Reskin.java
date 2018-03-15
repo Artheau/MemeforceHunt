@@ -48,7 +48,7 @@ import static javax.swing.SpringLayout.*;
  */
 public class Reskin {
 	public static final String VERSION;
-	private static final String RELEASE_URL = "https://github.com/fatmanspanda/MemeforceHunt/releases";
+	private static final String RELEASE_URL = "https://github.com/fatmanspanda/MemeforceHunt/releases/latest";
 
 	private static final String VERSION_PATH = "/version";
 	private static final String VERSION_URL = "https://raw.githubusercontent.com/fatmanspanda/MemeforceHunt/master/version";
