@@ -73,8 +73,8 @@ public class Reskin {
 	}
 
 	public static final int OFFSET = 0x18A800;
-	public static final int PAL_LOC = 0x103B2D;
-	public static final int PAL_OW = 0x100A03;
+	public static final int PAL_LOC = 0x104E34;
+	public static final int PAL_OW = 0x1011DA;
 
 	static final int PER_ROW = 11;
 	static final Skin[] SKINS = Skin.values();
